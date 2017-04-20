@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.dao.GoogleResumeDao">
+<!-- 为了返回list 类型而定义的returnMap -->
+    <resultMap type="GoogleResult" id="listGoogleResult">
+        <id column="id" property="id" />
+        <result column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="url" property="url" />
+    </resultMap>
+	<select id="finaAllResults" resultMap="listGoogleResult">
+	select * from `t_google_java_resumes` 
+	</select>
+	<insert id="addResult" parameterType="GoogleResult" useGeneratedKeys="true" keyProperty="id">
+	insert into `t_google_java_resumes`(id, title, des, url) values(#{id} ,#{title}, #{des}, #{url})
+	</insert>
+</mapper>
